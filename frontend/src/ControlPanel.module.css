@@ -1,0 +1,184 @@
+.pageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.container {
+  font-family: sans-serif;
+  padding: 2rem;
+  width: 700px;
+  background-color: #f4f4f4;
+  border-radius: 12px;
+  box-shadow: 0 2px 15px rgba(114, 79, 79, 0.1);
+  border: 3px solid #3c3c3c;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.section h3 {
+  margin-bottom: 0.5rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #681257a1;
+  color: rgb(100, 67, 67);
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.button:hover {
+  background-color: #fccda0;
+}
+
+.moveInput {
+  width: 70px;
+  padding: 6px;
+  border: 1px solid #4e2727;
+  border-radius: 6px;
+  margin-right: 0.5rem;
+}
+
+.status {
+  margin-top: 1.5rem;
+  font-family: monospace;
+  color: #802f2f;
+  font-size: 0.9rem;
+}
+
+.rightPanelOuter {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.rightPanelRow {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.logPanel {
+  width: 320px;
+  background-color: #ee8181;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(14, 14, 14, 0.08);
+  font-family: monospace;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logBox {
+  max-height: 585px;
+  overflow-y: auto;
+  border: 1px solid #0f0e0e;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background-color: #eaf5ea;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+.cameraPanelGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-grow: 1;
+}
+
+.cameraPanel {
+  width: 300px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.cameraBox {
+  width: 100%;
+  height: 200px;
+  background-color: #ddd;
+  border: 2px dashed #aaa;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: monospace;
+}
+
+/* Utility styles for layout */
+.header {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.section {
+  margin-bottom: 1.5rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.moveInput {
+  width: 70px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-right: 0.5rem;
+}
+
+.status {
+  margin-top: 1rem;
+  font-family: monospace;
+  color: #333;
+  font-size: 0.9rem;
+}
