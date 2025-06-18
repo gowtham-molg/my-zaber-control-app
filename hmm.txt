@@ -1,0 +1,3 @@
+/Applications/Zaber Launcher.app/Contents/MacOS/ZaberLauncher" --help
+/Applications/Zaber\ Launcher.app/Contents/MacOS/ZaberLauncher --help
+

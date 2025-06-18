@@ -1,0 +1,68 @@
+/0 0 66
+@01 0 66 OK IDLE WH 0
+/1 0 16 get comm.packet.size.max
+@01 0 16 OK IDLE WH 80
+/1 0 33 get deviceid
+@01 0 33 OK IDLE WH 30342
+/1 0 67 get system.serial
+@01 0 67 OK IDLE WH 129592
+/1 0 68 get version
+@01 0 68 OK IDLE WH 7.40
+/1 0 34 get version.build
+@01 0 34 OK IDLE WH 17143
+/1 0 69 get device.hw.modified
+@01 0 69 OK IDLE WH 0
+/1 0 70 get comm.command.packets.max
+@01 0 70 OK IDLE WH 5
+/1 0 8 get comm.word.size.max
+@01 0 08 OK IDLE WH 50
+/1 0 17 get get.settings.max
+@01 0 17 OK IDLE WH 12
+/1 0 35 get system.axiscount
+@01 0 35 OK IDLE WH 4
+/1 1 71 get resolution
+@01 1 71 OK IDLE -- 64
+/1 1 72 get peripheralid
+@01 1 72 OK IDLE -- 70067
+/1 1 36 get peripheral.serial
+@01 1 36 OK IDLE -- 130236
+/1 1 73 get peripheral.hw.modified
+@01 1 73 OK IDLE -- 0
+/1 2 74 get resolution
+@01 2 74 OK IDLE WH 64
+/1 2 18 get peripheralid
+@01 2 18 OK IDLE WH 70067
+/1 2 37 get peripheral.serial
+@01 2 37 OK IDLE WH 130237
+/1 2 75 get peripheral.hw.modified
+@01 2 75 OK IDLE WH 0
+/1 3 76 get resolution
+@01 3 76 OK IDLE -- 64
+/1 3 38 get peripheralid
+@01 3 38 OK IDLE -- 70067
+/1 3 77 get peripheral.serial
+@01 3 77 OK IDLE -- 130235
+/1 3 78 get peripheral.hw.modified
+@01 3 78 OK IDLE -- 0
+/1 4 4 get resolution
+@01 4 04 OK IDLE -- 64
+/1 4 9 get peripheralid
+@01 4 09 OK IDLE -- 70065
+/1 4 19 get peripheral.serial
+@01 4 19 OK IDLE -- 130259
+/1 4 39 get peripheral.hw.modified
+@01 4 39 OK IDLE -- 0
+/1 0 79 storage get zaber.label
+@01 0 79 RJ IDLE WH BADDATA
+/1 1 80 storage axis get zaber.label
+@01 1 80 RJ IDLE -- BADDATA
+/1 2 40 storage axis get zaber.label
+@01 2 40 RJ IDLE WH BADDATA
+/1 3 81 storage axis get zaber.label
+@01 3 81 RJ IDLE -- BADDATA
+/1 4 82 storage axis get zaber.label
+@01 4 82 RJ IDLE -- BADDATA
+/1 0 20 stream 1 setup disable
+@01 0 20 OK IDLE WH 0
+/1 0 41 stream 1 setup live 1 2
+@01 0 41 RJ IDLE WH LOCKSTEP

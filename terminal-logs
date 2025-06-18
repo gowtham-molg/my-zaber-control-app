@@ -1,0 +1,15 @@
+admin@MOLG-mini my-zaber-control-app %  python zaber_test.py
+Found 1 devices
+Traceback (most recent call last):
+  File "/Users/admin/my-zaber-control-app/zaber_test.py", line 20, in <module>
+    stream.setup_live(1, 2)  # Enable streaming to axes 1 and 2
+    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/zaber_motion/ascii/stream.py", line 122, in setup_live
+    call("device/stream_setup_live", request)
+  File "/opt/homebrew/lib/python3.11/site-packages/zaber_motion/call.py", line 69, in call
+    return process_response(response_buffers, make_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/zaber_motion/call.py", line 188, in process_response
+    raise convert_exception(response_dto.error_type, response_dto.error_message, response_buffers[1])
+zaber_motion.exceptions.command_failed_exception.CommandFailedException: CommandFailedException: Command "stream 1 setup live 1 2" rejected: LOCKSTEP: The command has failed because the device currently has an enabled lockstep group.
+admin@MOLG-mini my-zaber-control-app % 
