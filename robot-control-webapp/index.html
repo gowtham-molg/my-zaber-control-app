@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Robot Control</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Robot Control Panel</h1>
+  </header>
+
+  <nav>
+    <button onclick="showTab('manual')">Manual Control</button>
+    <button onclick="showTab('automation')">Automation</button>
+  </nav>
+
+  <main>
+    <section id="manual" class="tab-content active">
+    <h2>Manual Controls</h2>
+
+    <div class="axis-control">
+        <label for="xDistance">X Distance (mm):</label>
+        <input type="number" id="xDistance" value="10" />
+        <button onclick="moveAxis('x')">Move X</button>
+    </div>
+
+    <div class="axis-control">
+        <label for="yDistance">Y Distance (mm):</label>
+        <input type="number" id="yDistance" value="10" />
+        <button onclick="moveAxis('y')">Move Y</button>
+    </div>
+
+    <div class="axis-control">
+        <label for="zDistance">Z Distance (mm):</label>
+        <input type="number" id="zDistance" value="10" />
+        <button onclick="moveAxis('z')">Move Z</button>
+    </div>
+
+        <div class="jog-controls">
+      <h3>Jog Axes</h3>
+      <div class="jog-row">
+        <label>X:</label>
+        <button onclick="jog('x', -1)">◀ -X</button>
+        <button onclick="jog('x', 1)">+X ▶</button>
+      </div>
+      <div class="jog-row">
+        <label>Y:</label>
+        <button onclick="jog('y', -1)">▼ -Y</button>
+        <button onclick="jog('y', 1)">+Y ▲</button>
+      </div>
+      <div class="jog-row">
+        <label>Z:</label>
+        <button onclick="jog('z', -1)">⬇ -Z</button>
+        <button onclick="jog('z', 1)">+Z ⬆</button>
+      </div>
+      <label for="jogStep">Jog Step (mm):</label>
+      <input type="number" id="jogStep" value="1" style="width: 60px; margin-left: 1em;" />
+    </div>
+
+        <hr />
+    <h3>Modular G-code Tasks</h3>
+    <div id="gcodeTasks" class="gcode-tasks">
+      <button onclick="runTask('laser_sticker_2_1')">Laser Sticker 2-1</button>
+      <button onclick="runTask('grab_driver')">Grab Driver</button>
+      <button onclick="runTask('top_magnet')">Top Magnet</button>
+      <!-- Add more as needed -->
+    </div>
+
+
+    </section>
+
+    <section id="automation" class="tab-content">
+      <h2>Automation</h2>
+      <input type="file" id="gcodeFile">
+      <button onclick="runSequence()">Run</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>Status: <span id="status">Idle</span></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
