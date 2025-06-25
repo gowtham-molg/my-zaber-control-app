@@ -3,6 +3,9 @@ from zaber_motion.ascii import Connection
 from zaber_motion.ascii import DigitalOutputAction
 import time
 
+def pause_play():
+    input("Press Enter to continue...")
+
 def pull_top_magnet():
     with Connection.open_serial_port("/dev/tty.usbmodem1295921") as connection:
         connection.enable_alerts()
@@ -17,49 +20,78 @@ def pull_top_magnet():
         y_axis.home()
         z_axis.home()
 
-        #device.generic_command("M64 P4")  # Engage tool lock
+        pause_play()
 
+##load electromagnet tool
+        # Move to tool pickup position
+        x_axis.move_absolute(240, Units.LENGTH_MILLIMETRES)
+        y_axis.move_absolute(294, Units.LENGTH_MILLIMETRES)
+        z_axis.move_absolute(30, Units.LENGTH_MILLIMETRES)
+        x_axis.move_absolute(314, Units.LENGTH_MILLIMETRES)
+        # pickup tool
+        z_axis.move_relative(20, Units.LENGTH_MILLIMETRES)
+        x_axis.move_relative(2, Units.LENGTH_MILLIMETRES)
+        z_axis.move_relative(22.5, Units.LENGTH_MILLIMETRES)
+        # Turn ON digital output 4
+        device.io.set_digital_output(4, DigitalOutputAction.ON)
+        state = device.io.get_digital_output(4)
+        print(f"Output {4} state after ON: {state}")
+        x_axis.move_relative(-50, Units.LENGTH_MILLIMETRES)
+
+        pause_play()
+
+##harvest top magnet
         # Rise up to start
         z_axis.move_absolute(0, Units.LENGTH_MILLIMETRES)
-
         # Move over top magnet
         x_axis.move_absolute(57, Units.LENGTH_MILLIMETRES)
         y_axis.move_absolute(227, Units.LENGTH_MILLIMETRES)
-
         # Move to magnet
         x_axis.move_absolute(53, Units.LENGTH_MILLIMETRES)
         y_axis.move_absolute(230, Units.LENGTH_MILLIMETRES)
         z_axis.move_absolute(60, Units.LENGTH_MILLIMETRES)
-
-        # # Power electromagnet and distend
-        # connection.generic_command_no_response(command, device = 0, axis = 0)
-        device.generic_command_no_response("M64 P2")  # Power electromagnet
-        # device.generic_command("M64 P3")  # Distend
-        z_axis.move_absolute(68, Units.LENGTH_MILLIMETRES)  # Touch magnet
-        time.sleep(0.5)  # Wait for attachment
-
-        # Lift
+        # Turn ON digital output 2
+        device.io.set_digital_output(2, DigitalOutputAction.ON)
+        state = device.io.get_digital_output(2)
+        print(f"Output {2} state after ON: {state}")
+        # Turn ON digital output 3
+        device.io.set_digital_output(3, DigitalOutputAction.ON)
+        state = device.io.get_digital_output(3)
+        print(f"Output {3} state after ON: {state}")
+        z_axis.move_absolute(68, Units.LENGTH_MILLIMETRES)
+        time.sleep(0.5) 
         z_axis.move_absolute(0, Units.LENGTH_MILLIMETRES)
 
-        # Deposit magnet
+        pause_play()
+        
+
+##DEPOSIT TOP MAGNET
         x_axis.move_absolute(100, Units.LENGTH_MILLIMETRES)
         y_axis.move_absolute(0, Units.LENGTH_MILLIMETRES)
-        # device.generic_command("M65 P2")  # Power down electromagnet
-        # device.generic_command("M65 P3")  # Retract
-        time.sleep(0.5)  # Wait for release
+        # Turn OFF digital output 2
+        device.io.set_digital_output(2, DigitalOutputAction.OFF)
+        state = device.io.get_digital_output(2)
+        print(f"Output {2} state after ON: {state}")
+        # Turn OFF digital output 3
+        device.io.set_digital_output(3, DigitalOutputAction.OFF)
+        state= device.io.get_digital_output(3)
+        print(f"Output {3} state after ON: {state}")
+        time.sleep(0.5) 
 
-        # Run conveyor
-        #device.generic_command("M64 P1")
+        pause_play()
+
+## Run conveyor (simulate)
+        print("Simulating conveyor run...")
+        device.io.set_digital_output(1, DigitalOutputAction.ON)
+        state = device.io.get_digital_output(1)
+        print(f"Output {1} state after ON: {state}")
         time.sleep(2)
-        #device.generic_command("M65 P1")
+        # Turn OFF digital output 1
+        device.io.set_digital_output(1, DigitalOutputAction.OFF)
+        state = device.io.get_digital_output(1)
+        print(f"Output {1} state after ON: {state}") 
 
-        # End
-        z_axis.move_absolute(0, Units.LENGTH_MILLIMETRES)
-        x_axis.move_absolute(140, Units.LENGTH_MILLIMETRES)
-        y_axis.move_absolute(244.5, Units.LENGTH_MILLIMETRES)
-        #device.generic_command("M65 P4")  # Disengage tool lock
-
-
+        pause_play()
 
 
 if __name__ == "__main__":
